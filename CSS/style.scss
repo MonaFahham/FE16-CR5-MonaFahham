@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Righteous&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    .logo_size {
+        width: 5vw;
+    }
+    .nav_color {
+        color: #82e3e5;
+    }
+    .nav_color:hover {
+        color: #5db3b5;
+    }
+    .search {
+        background-color: #82e3e5;
+    }
+    .search:hover {
+        background-color: #5db3b5;
+    }
+}
+
+// .shadow {
+//     box-shadow: rgb(0 0 0 / 25%) 0px 6px -1px 1px;
+// }
+.name_style {
+    color: white;
+    font-size: 1rem;
+    font-family: "Kalam", cursive;
+    text-align: center;
+    padding-left: 40%;
+}
+
+.describe_text {
+    font-size: 1rem;
+    font-style: bold;
+    font-family: "Kalam";
+}
+
+.extra_info-text {
+    padding: 1rem;
+}
+
+.btn_vaccine {
+    border-radius: 20px;
+}
+
+.hero_image {
+    position: relative;
+    .fit-image {
+        width: 100%;
+        object-position: center;
+        object-fit: cover;
+    }
+}
+
+.get_to_know {
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Kalam", cursive;
+}
+
+.btn-radius {
+    border-radius: 3rem;
+    width: 10vw;
+}
+
+footer {
+    max-width: 100%;
+    padding-bottom: 1vh;
+    margin-top: 10px;
+    .social_color {
+        background-color: #99c0d4;
+    }
+    .social_icon {
+        padding: 16%;
+        width: 40px;
+        margin: 0.7rem;
+    }
+    .copyright_color {
+        background-color: #4b95ba;
+        height: 8vh;
+        padding-top: 3rem;
+    }
+}

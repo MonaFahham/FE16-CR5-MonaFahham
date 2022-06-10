@@ -1,1 +1,95 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Righteous&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+nav .logo_size {
+  width: 5vw;
+}
+
+nav .nav_color {
+  color: #82e3e5;
+}
+
+nav .nav_color:hover {
+  color: #5db3b5;
+}
+
+nav .search {
+  background-color: #82e3e5;
+}
+
+nav .search:hover {
+  background-color: #5db3b5;
+}
+
+.name_style {
+  color: white;
+  font-size: 1rem;
+  font-family: "Kalam", cursive;
+  text-align: center;
+  padding-left: 40%;
+}
+
+.describe_text {
+  font-size: 1rem;
+  font-style: bold;
+  font-family: "Kalam";
+}
+
+.extra_info-text {
+  padding: 1rem;
+}
+
+.btn_vaccine {
+  border-radius: 20px;
+}
+
+.hero_image {
+  position: relative;
+}
+
+.hero_image .fit-image {
+  width: 100%;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.get_to_know {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Kalam", cursive;
+}
+
+.btn-radius {
+  border-radius: 3rem;
+  width: 10vw;
+}
+
+footer {
+  max-width: 100%;
+  padding-bottom: 1vh;
+  margin-top: 10px;
+}
+
+footer .social_color {
+  background-color: #99c0d4;
+}
+
+footer .social_icon {
+  padding: 16%;
+  width: 40px;
+  margin: 0.7rem;
+}
+
+footer .copyright_color {
+  background-color: #4b95ba;
+  height: 8vh;
+  padding-top: 3rem;
+}
+/*# sourceMappingURL=style.css.map */
