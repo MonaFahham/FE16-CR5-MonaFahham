@@ -93,8 +93,7 @@ footer .copyright_color {
   padding-top: 3rem;
 }
 
-.vaccinated {
-  background-color: red;
-  color: white;
+.vac_icon {
+  width: 1.5rem;
 }
 /*# sourceMappingURL=style.css.map */
