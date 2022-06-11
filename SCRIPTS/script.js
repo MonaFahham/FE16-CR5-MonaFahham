@@ -120,35 +120,45 @@ for (let value of arrayDog) {
     document.getElementById("result").innerHTML +=
         value.display();
 }
-let totalArray = ["array", "arrayCat", "arrayDog"];
+// let totalArray: any = ["array", "arrayCat", "arrayDog"];
 //===============================
-var color = ["green", "red"];
-function colorChange() {
-    for (let i = 0; i < totalArray.length; i++) {
-        if (totalArray[i].vaccine == true) {
-            document.querySelectorAll(".btn-vaccine")[i].addEventListener("click", function () {
-                document.querySelectorAll(".btn-vaccine")[i].style.background = color[0];
-            });
-        }
-        else {
-            document.querySelectorAll(".btn-vaccine")[i].addEventListener("click", function () {
-                document.querySelectorAll(".btn-vaccine")[i].style.background = color[1];
-            });
-        }
-    }
-}
-colorChange();
+// var color = ["green", "red"];
+// function colorChange() {
+//   for (let i = 0; i < totalArray.length; i++) {
+//     if (totalArray[i].vaccine == true) {
+//       (
+//         document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+//       ).addEventListener("click", function () {
+//         (
+//           document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+//         ).style.background = color[0];
+//       });
+//     } else {
+//       (
+//         document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+//       ).addEventListener("click", function () {
+//         (
+//           document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+//         ).style.background = color[1];
+//       });
+//     }
+//   }
+// }
+// colorChange();
 //=======================================
-for (let i = 0; i < totalArray.length; i++) {
-    function sortAge() {
-        totalArray.sort(function (min, max) {
-            return max.age - min.age;
-        });
-    }
-}
-document.querySelector(".link_sort").addEventListener("click", function () {
-    sortAge();
-});
+// for (let i = 0; i < totalArray.length; i++) {
+//   function sortAge() {
+//     totalArray.sort(function (min: number, max: number) {
+//       return max.age - min.age;
+//     });
+//   }
+// }
+// (document.querySelector(".link_sort") as HTMLElement).addEventListener(
+//   "click",
+//   function () {
+//     sortAge();
+//   }
+// );
 //==========================================
 // for (let i = 0; i < array.length; i++) {
 //   let btnVaccine = document.getElementsByClassName("btn_vaccine");
