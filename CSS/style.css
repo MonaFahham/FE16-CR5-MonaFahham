@@ -92,4 +92,9 @@ footer .copyright_color {
   height: 8vh;
   padding-top: 3rem;
 }
+
+.vaccinated {
+  background-color: red;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

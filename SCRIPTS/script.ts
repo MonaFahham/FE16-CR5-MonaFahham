@@ -37,7 +37,7 @@ class Animal {
             <p class="card-text describe_text">Age: ${this.age}</p>
             <p class="card-text describe_text">Size: ${this.size}</p>
         </div>
-        <button type="button" class="btn btn-success btn-lg btn_vaccine rounded-pill">Vaccine</button>  
+        <button type="button" class="btn btn-success btn-lg rounded-pill btn-vaccine" >Vaccine</button>  
             </div>            
          </div>
         </div>
@@ -140,11 +140,11 @@ class Dog extends Animal {
 
 let array: Array<Animal> = [];
 
-new Animal("Rainbow", 5, "female", "small", true, "../IMG/7-bird.jpg");
-new Animal("Needle", 3, "male", "small", false, "../IMG/2-porcupine.jpg");
+new Animal("Rainbow", 3, "female", "small", true, "../IMG/7-bird.jpg");
+new Animal("Needle", 1, "male", "small", false, "../IMG/2-porcupine.jpg");
 new Animal(
   "Bunny",
-  2,
+  4,
   "female",
   "small",
   true,
@@ -156,16 +156,6 @@ console.log(array);
 for (let value of array) {
   (document.getElementById("result") as HTMLElement).innerHTML +=
     value.display();
-
-  // let btnVaccine = document.getElementsByClassName("btn_vaccine");
-
-  // for (let i = 0; i < btnVaccine.length; i++) {
-  //   if (btnVaccine[i]) {
-  //     btnVaccine[i] = "bg-danger";
-  //   } else {
-  //     btnVaccine[i] = "bg-danger";
-  //   }
-  // }
 }
 
 let arrayCat: Array<Cat> = [];
@@ -194,7 +184,7 @@ new Cat(
 );
 new Cat(
   "Shadow",
-  7,
+  4,
   "male",
   "medium",
   false,
@@ -225,7 +215,7 @@ new Dog(
 );
 new Dog(
   "Ace",
-  2,
+  8,
   "male",
   "large",
   false,
@@ -240,6 +230,100 @@ for (let value of arrayDog) {
   (document.getElementById("result") as HTMLElement).innerHTML +=
     value.display();
 }
+
+let totalArray: any = ["array", "arrayCat", "arrayDog"];
+
+//===============================
+var color = ["green", "red"];
+function colorChange() {
+  for (let i = 0; i < totalArray.length; i++) {
+    if (totalArray[i].vaccine == true) {
+      (
+        document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+      ).addEventListener("click", function () {
+        (
+          document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+        ).style.background = color[0];
+      });
+    } else {
+      (
+        document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+      ).addEventListener("click", function () {
+        (
+          document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+        ).style.background = color[1];
+      });
+    }
+  }
+}
+
+colorChange();
+
+//=======================================
+for (let i = 0; i < totalArray.length; i++) {
+  function sortAge() {
+    totalArray.sort(function (min: number, max: number) {
+      return max.age - min.age;
+    });
+  }
+}
+
+(document.querySelector(".link_sort") as HTMLElement).addEventListener(
+  "click",
+  function () {
+    sortAge();
+  }
+);
+//==========================================
+// for (let i = 0; i < array.length; i++) {
+//   let btnVaccine = document.getElementsByClassName("btn_vaccine");
+//   btnVaccine[i].addEventListener("click", function () {
+//     if (array[i].vaccine == true) {
+//       (
+//         document.getElementsByClassName("btn-vaccine")[i] as HTMLElement
+//       ).style.backgroundColor = "bg-info";
+//     } else {
+//       (
+//         document.getElementsByClassName("btn-vaccine")[i] as HTMLElement
+//       ).style.background = "bg-danger";
+//     }
+//   });
+// }
+//=========================================
+//   for (let i = 0; i < arrayDog.length; i++) {
+//     if (value.vaccine == true) {
+//       (
+//         document.getElementsByClassName("btn-vaccine")[i] as HTMLElement
+//       ).style.background = "bg-success";
+//     } else {
+//       (
+//         document.getElementsByClassName("btn-vaccine")[i] as HTMLElement
+//       ).style.background = "bg-danger";
+//     }
+//   }
+
+//=========================================
+
+//btn color
+// function clickVaccine() {
+//   let btns = document.getElementsByClassName("btn-vaccine");
+//   for (let i = 0; i < btns.length; i++) {
+//     btns[i].addEventListener("click", function () {
+//       array[i].vaccine = !array[i].vaccine;
+//       //   doOnClick();
+//       (
+//         document.querySelectorAll(".btn-vaccine")[i] as HTMLElement
+//       ).style.background = "bg-danger";
+//     });
+//   }
+// }
+
+// function doOnClick() {
+//   let btns = document.getElementsByClassName("btn-vaccine");
+//   for (let i = 0; i < btns.length; i++) {}
+// }
+
+//=========================================
 
 // <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-x" viewBox="0 0 16 16">
 //   <path fill-rule="evenodd" d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
