@@ -9,6 +9,19 @@ class Animal {
         this.image = image;
         array.push(this);
     }
+    // isVaccine(vac: boolean): string {
+    //   if (vac) {
+    //     return `btn-success`;
+    //   } else {
+    //     return `btn-danger`;
+    //   }
+    // }
+    //setVaccine(vac: boolean) {
+    //  this.vaccine = vac;
+    //}
+    //getVaccine() {
+    //  return this.vaccine;
+    //}
     display() {
         return `
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center my-3">
@@ -24,7 +37,7 @@ class Animal {
             <p class="card-text describe_text">Age: ${this.age}</p>
             <p class="card-text describe_text">Size: ${this.size}</p>
         </div>
-        <button type="button" class="btn bg-${this.vaccine ? "success" : "danger"} btn-lg rounded-pill btn-vaccine" id="ChangeTest">
+        <button type="button" class="btn colorChangeBtn bg-${this.vaccine ? "success" : "danger"} btn-lg rounded-pill btn-vaccine" id="ChangeTest">
         ${this.vaccine
             ? "Vaccine <img src='../IMG/vaccine1.jpg' class='vac_icon'/>"
             : "Not Vaccine <img src='../IMG/novaccine.png' class='vac_icon'>"}
@@ -41,7 +54,7 @@ class Cat extends Animal {
         this.breed = breed;
         this.furColor = furColor;
         this.URLBreed = URLBreed;
-        arrayCat.push(this);
+        // arrayCat.push(this);
     }
     display() {
         return `<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center my-3">
@@ -56,7 +69,7 @@ class Cat extends Animal {
               <p class="card-text describe_text">Age: ${this.age}</p>
               <p class="card-text describe_text">Size: ${this.size}</p>
           </div>
-          <button type="button" class="btn bg-${this.vaccine ? "success" : "danger"} btn-lg rounded-pill btn-vaccine">
+          <button type="button" class="btn colorChangeBtn bg-${this.vaccine ? "success" : "danger"} btn-lg rounded-pill btn-vaccine">
           ${this.vaccine
             ? "Vaccine <img src='../IMG/vaccine1.jpg' class='vac_icon'/>"
             : "Not Vaccine <img src='../IMG/novaccine.png' class='vac_icon'>"}
@@ -71,12 +84,13 @@ class Cat extends Animal {
     </div>`;
     }
 }
+let array = [];
 class Dog extends Animal {
     constructor(name, age, gender, size, vaccine, image, breed, training) {
         super(name, age, gender, size, vaccine, image);
         this.breed = breed;
         this.training = training;
-        arrayDog.push(this);
+        //arrayDog.push(this);
     }
     display() {
         return `<div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center my-3">
@@ -92,7 +106,7 @@ class Dog extends Animal {
               <p class="card-text describe_text">Age: ${this.age}</p>
               <p class="card-text describe_text">Size: ${this.size}</p>
           </div>
-          <button type="button" class="btn bg-${this.vaccine ? "success" : "danger"} btn-lg rounded-pill btn-vaccine">
+          <button type="button" class="btn colorChangeBtn bg-${this.vaccine ? "success" : "danger"} btn-lg rounded-pill btn-vaccine">
           ${this.vaccine
             ? "Vaccine <img src='../IMG/vaccine1.jpg' class='vac_icon'/>"
             : "Not Vaccine <img src='../IMG/novaccine.png' class='vac_icon'>"}
@@ -106,49 +120,73 @@ class Dog extends Animal {
     </div>`;
     }
 }
-let array = [];
+//let array: Array<Animal> = [];
 new Animal("Rainbow", 3, "female", "small", true, "../IMG/7-bird.jpg");
 new Animal("Needle", 1, "male", "small", false, "../IMG/2-porcupine.jpg");
 new Animal("Bunny", 4, "female", "small", true, "../IMG/guinea-pig-2017678_1920.jpg");
 // console.log(array);
-for (let value of array) {
-    document.getElementById("result").innerHTML +=
-        value.display();
-}
-let arrayCat = [];
+//for (let value of array) {
+//  (document.getElementById("result") as HTMLElement).innerHTML +=
+//    value.display();
+//}
+//let arrayCat: Array<Cat> = [];
 new Cat("Peach", 6, "female", "large", false, "../IMG/cat-1455468_1920.jpg", "persian", "white", "www.google.com");
 new Cat("Belfi", 7, "male", "small", true, "../IMG/cat-5457315_1920.jpg", "persian", "light brown", "www.google.com");
 new Cat("Shadow", 4, "male", "medium", false, "../IMG/cat-4638664_1920.jpg", "persian", "light brown", "www.google.com");
 // console.log(arrayCat);
-for (let value of arrayCat) {
-    document.getElementById("result").innerHTML +=
-        value.display();
-}
-let arrayDog = [];
+//for (let value of arrayCat) {
+//  (document.getElementById("result") as HTMLElement).innerHTML +=
+//    value.display();
+//}
+//let arrayDog: Array<Dog> = [];
 new Dog("Snowflake", 2, "female", "small", true, "../IMG/maltese-1123016_1920.jpg", "Maltese", true);
 new Dog("Ace", 8, "male", "large", false, "../IMG/german-shepherd-1845744_1920.jpg", "Doberman", true);
+document.querySelector("#link_sort").addEventListener("click", agesort);
+function agesort() {
+    array.sort(function (a, v) {
+        return a.age - v.age;
+    });
+    document.querySelector(".looky").innerHTML = "";
+    cards();
+}
+function cards() {
+    const animalscontainer = document.querySelector(".looky");
+    animalscontainer.innerHTML = "";
+    array.forEach((val) => {
+        animalscontainer.innerHTML += val.display();
+    });
+    chng();
+}
+cards();
+function chng() {
+    let btns = document.getElementsByClassName("colorChangeBtn");
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            array[i].vaccine = !array[i].vaccine;
+            cards();
+        });
+    }
+}
 // console.log(arrayDog);
-for (let value of arrayDog) {
-    document.getElementById("result").innerHTML +=
-        value.display();
-}
+//for (let value of arrayDog) {
+//  (document.getElementById("result") as HTMLElement).innerHTML +=
+//    value.display();
+//}
 // Sort Animal Age
-function sortAge() {
-    array.sort(function (min, max) {
-        return max.age - min.age;
-    });
-    document.getElementById("result").innerHTML = "";
-    sortedCarts();
-}
-document.getElementById("link_sort").addEventListener("click", function () {
-    sortAge();
-});
-function sortedCarts() {
-    array.forEach((value) => {
-        document.getElementById("sort_animal_age").innerHTML +=
-            value.display();
-    });
-}
+//function sortAge() {
+//  array.sort(function (min, max) {
+//    return max.age - min.age;
+//  });
+//  (document.getElementById("result") as HTMLElement).innerHTML = "";
+//  sortedCarts();
+//}
+//
+//(document.getElementById("link_sort") as HTMLElement).addEventListener(
+//  "click",
+//  function () {
+//    sortAge();
+//  }
+//);
 // Change Carts Colors
 // function colorChange() {
 //   let i: number;
@@ -163,4 +201,14 @@ function sortedCarts() {
 //     });
 //   }
 // }
-// colorChange();
+// colobttrChange();
+// let bttt = document.getElementsByClassName("btn-vaccine") as any;
+// for (let i = 0; i < bttt.length; i++) {
+//   bttt[i].addEventListener("click", function () {
+//     if ((bttt[i].className == "btn bg-danger")) {
+//       bttt[i].className = "btn bg-success";
+//     } else {
+//       bttt[i].className == "btn bg-danger";
+//     }
+//   });
+// }

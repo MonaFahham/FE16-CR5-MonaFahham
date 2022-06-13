@@ -22,6 +22,21 @@ class Animal {
     array.push(this);
   }
 
+  // isVaccine(vac: boolean): string {
+  //   if (vac) {
+  //     return `btn-success`;
+  //   } else {
+  //     return `btn-danger`;
+  //   }
+  // }
+
+  //setVaccine(vac: boolean) {
+  //  this.vaccine = vac;
+  //}
+  //getVaccine() {
+  //  return this.vaccine;
+  //}
+
   display() {
     return `
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center my-3">
@@ -39,7 +54,7 @@ class Animal {
             <p class="card-text describe_text">Age: ${this.age}</p>
             <p class="card-text describe_text">Size: ${this.size}</p>
         </div>
-        <button type="button" class="btn bg-${
+        <button type="button" class="btn colorChangeBtn bg-${
           this.vaccine ? "success" : "danger"
         } btn-lg rounded-pill btn-vaccine" id="ChangeTest">
         ${
@@ -75,7 +90,7 @@ class Cat extends Animal {
     this.breed = breed;
     this.furColor = furColor;
     this.URLBreed = URLBreed;
-    arrayCat.push(this);
+    // arrayCat.push(this);
   }
 
   display() {
@@ -93,7 +108,7 @@ class Cat extends Animal {
               <p class="card-text describe_text">Age: ${this.age}</p>
               <p class="card-text describe_text">Size: ${this.size}</p>
           </div>
-          <button type="button" class="btn bg-${
+          <button type="button" class="btn colorChangeBtn bg-${
             this.vaccine ? "success" : "danger"
           } btn-lg rounded-pill btn-vaccine">
           ${
@@ -112,6 +127,7 @@ class Cat extends Animal {
     </div>`;
   }
 }
+let array: Array<Animal> = [];
 
 class Dog extends Animal {
   breed: string;
@@ -130,7 +146,7 @@ class Dog extends Animal {
     super(name, age, gender, size, vaccine, image);
     this.breed = breed;
     this.training = training;
-    arrayDog.push(this);
+    //arrayDog.push(this);
   }
 
   display() {
@@ -149,7 +165,7 @@ class Dog extends Animal {
               <p class="card-text describe_text">Age: ${this.age}</p>
               <p class="card-text describe_text">Size: ${this.size}</p>
           </div>
-          <button type="button" class="btn bg-${
+          <button type="button" class="btn colorChangeBtn bg-${
             this.vaccine ? "success" : "danger"
           } btn-lg rounded-pill btn-vaccine">
           ${
@@ -168,7 +184,7 @@ class Dog extends Animal {
   }
 }
 
-let array: Array<Animal> = [];
+//let array: Array<Animal> = [];
 
 new Animal("Rainbow", 3, "female", "small", true, "../IMG/7-bird.jpg");
 new Animal("Needle", 1, "male", "small", false, "../IMG/2-porcupine.jpg");
@@ -183,12 +199,12 @@ new Animal(
 
 // console.log(array);
 
-for (let value of array) {
-  (document.getElementById("result") as HTMLElement).innerHTML +=
-    value.display();
-}
+//for (let value of array) {
+//  (document.getElementById("result") as HTMLElement).innerHTML +=
+//    value.display();
+//}
 
-let arrayCat: Array<Cat> = [];
+//let arrayCat: Array<Cat> = [];
 
 new Cat(
   "Peach",
@@ -226,12 +242,12 @@ new Cat(
 
 // console.log(arrayCat);
 
-for (let value of arrayCat) {
-  (document.getElementById("result") as HTMLElement).innerHTML +=
-    value.display();
-}
+//for (let value of arrayCat) {
+//  (document.getElementById("result") as HTMLElement).innerHTML +=
+//    value.display();
+//}
 
-let arrayDog: Array<Dog> = [];
+//let arrayDog: Array<Dog> = [];
 
 new Dog(
   "Snowflake",
@@ -254,35 +270,61 @@ new Dog(
   true
 );
 
-// console.log(arrayDog);
-
-for (let value of arrayDog) {
-  (document.getElementById("result") as HTMLElement).innerHTML +=
-    value.display();
-}
-
-// Sort Animal Age
-function sortAge() {
-  array.sort(function (min, max) {
-    return max.age - min.age;
-  });
-  (document.getElementById("result") as HTMLElement).innerHTML = "";
-  sortedCarts();
-}
-
-(document.getElementById("link_sort") as HTMLElement).addEventListener(
+(document.querySelector("#link_sort") as HTMLElement).addEventListener(
   "click",
-  function () {
-    sortAge();
-  }
+  agesort
 );
 
-function sortedCarts() {
-  array.forEach((value) => {
-    (document.getElementById("sort_animal_age") as HTMLElement).innerHTML +=
-      value.display();
+function agesort() {
+  array.sort(function (a, v) {
+    return a.age - v.age;
   });
+  (document.querySelector(".looky") as HTMLElement).innerHTML = "";
+  cards();
 }
+
+function cards() {
+  const animalscontainer = document.querySelector(".looky") as HTMLElement;
+  animalscontainer.innerHTML = "";
+  array.forEach((val) => {
+    animalscontainer.innerHTML += val.display();
+  });
+  chng();
+}
+cards();
+
+function chng() {
+  let btns = document.getElementsByClassName("colorChangeBtn");
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      array[i].vaccine = !array[i].vaccine;
+      cards();
+    });
+  }
+}
+
+// console.log(arrayDog);
+
+//for (let value of arrayDog) {
+//  (document.getElementById("result") as HTMLElement).innerHTML +=
+//    value.display();
+//}
+
+// Sort Animal Age
+//function sortAge() {
+//  array.sort(function (min, max) {
+//    return max.age - min.age;
+//  });
+//  (document.getElementById("result") as HTMLElement).innerHTML = "";
+//  sortedCarts();
+//}
+//
+//(document.getElementById("link_sort") as HTMLElement).addEventListener(
+//  "click",
+//  function () {
+//    sortAge();
+//  }
+//);
 
 // Change Carts Colors
 // function colorChange() {
@@ -298,4 +340,15 @@ function sortedCarts() {
 //     });
 //   }
 // }
-// colorChange();
+// colobttrChange();
+
+// let bttt = document.getElementsByClassName("btn-vaccine") as any;
+// for (let i = 0; i < bttt.length; i++) {
+//   bttt[i].addEventListener("click", function () {
+//     if ((bttt[i].className == "btn bg-danger")) {
+//       bttt[i].className = "btn bg-success";
+//     } else {
+//       bttt[i].className == "btn bg-danger";
+//     }
+//   });
+// }
